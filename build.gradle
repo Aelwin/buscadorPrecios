@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = 'RecopilarPrecios'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.api-client:google-api-client:1.30.4'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.30.6'
+    implementation 'com.google.apis:google-api-services-sheets:v4-rev581-1.25.0'
+    implementation 'org.codehaus.groovy:groovy-all:3.0.4'
+    implementation 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+    implementation 'org.testng:testng:7.3.0'//la añado porque alguna dependencia busca la versión 7.2.0 y no existe
+}
+
+sourceSets {
+    main {
+    	java { srcDirs = [] }    // no source dirs for the java compiler
+        groovy { srcDir "src" }  // compile everything in src/ with groovy
+    }
+}
